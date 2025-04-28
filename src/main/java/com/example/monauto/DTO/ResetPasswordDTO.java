@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 public class ResetPasswordDTO {
     @NotBlank
     private String token;
-
     @NotBlank
     @Size(min = 6, max = 40)
     private String newPassword;

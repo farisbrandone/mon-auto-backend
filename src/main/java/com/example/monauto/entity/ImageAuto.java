@@ -1,5 +1,6 @@
 package com.example.monauto.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,5 +12,6 @@ public class ImageAuto {
     private Long id;
     private String url;
     @ManyToOne
+    @JsonIgnore
     private Auto auto;
 }

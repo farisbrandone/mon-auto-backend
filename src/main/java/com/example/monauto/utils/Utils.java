@@ -28,7 +28,8 @@ public class Utils {
         this.seller.setPassword(signupRequest.getPassword());
         this.seller.setDescription(signupRequest.getDescription());
        this.seller.setIdentificationDocumentFile(signupRequest.getIdentificationDocumentFile());
-
+        this.seller.setDateOfCreated(GenerateToken.convertStringToDate(signupRequest.getDateOfCreated()).toInstant());
+        this.seller.setDateOfModified(GenerateToken.convertStringToDate(signupRequest.getDateOfModified()).toInstant());
         return seller;
 
     }

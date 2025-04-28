@@ -37,6 +37,15 @@ public class AutoMap {
         this.auto.setLastMaintenanceDate(GenerateToken.convertStringToDate(autoPostDto.getLastMaintenanceDate()));
          this.auto.setDateOfCreated(GenerateToken.convertStringToDate(autoPostDto.getDateOfCreated()));
          this.auto.setDateOfModified(GenerateToken.convertStringToDate(autoPostDto.getDateOfModified()));
-         return this.auto;
+         this.auto.setModel(autoPostDto.getModel());
+         this.auto.setCouleurInt(autoPostDto.getCouleurInt());
+         this.auto.setCouleurExt(autoPostDto.getCouleurExt());
+         this.auto.setVilleDuBien(autoPostDto.getVilleDuBien());
+         this.auto.setNbreDePlace(autoPostDto.getNbreDePlace());
+         this.auto.setNbreDePorte(autoPostDto.getNbreDePorte());
+        this.auto.setConso100kmAutoRoute(Float.parseFloat(autoPostDto.getConso100kmAutoRoute()));
+         this.auto.setConso100kmVille(Float.parseFloat(autoPostDto.getConso100kmVille()));
+         this.auto.setTailleDuMoteur(Float.parseFloat(autoPostDto.getTailleDuMoteur()));
+        return this.auto;
     }
 }

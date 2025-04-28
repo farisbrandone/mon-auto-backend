@@ -43,14 +43,14 @@ public class AutoServiceImplementation implements IAutoService {
 
     @Override
     public void initSeller() {
-        Stream.of("Faris", "Hedie", "Willy", "Ines", "Martial", "Doline").forEach(user -> {
+      /*  Stream.of("Faris", "Hedie", "Willy", "Ines", "Martial", "Doline").forEach(user -> {
 
             Seller seller = new Seller();
             RandomString randomString = new RandomString();
             seller.setNom(user);
             seller.setTypeSeller(randomString.RandomSellerMethod());
             sellerRepository.save(seller);
-        });
+        });*/
 
     }
 
@@ -59,9 +59,13 @@ public class AutoServiceImplementation implements IAutoService {
         Auto auto1 = new Auto();
         AutoMap autoMap=new AutoMap(auto1, auto);
         Auto autoSend=autoMap.getAutoWithAutoPostDto();
-        ImageAuto imageAuto=new ImageAuto();
+
         Collection<ImageAuto> imageAutoCollection=new ArrayList<>();
+        Collection<ImageAuto> imageAutoCollection2=new ArrayList<>();
         for (String imageAuto1 : auto.getImagesAuto()) {
+             System.out.println("ZOOZOZ");
+            System.out.println(imageAuto1);
+            ImageAuto imageAuto=new ImageAuto();
             imageAuto.setUrl(imageAuto1);
             ImageAuto imageAuto2= imageAutoRepository.save(imageAuto);
             imageAutoCollection.add(imageAuto2);
@@ -75,13 +79,21 @@ public class AutoServiceImplementation implements IAutoService {
         Seller seller=sellerRepository.findSellerByEmail(email);
         autoSend.setSeller(seller);
         autoSend.setImagesAuto(imageAutoCollection);
-       return autoRepository.save(autoSend);
+        Auto myAuto=autoRepository.save(autoSend);
+        for (ImageAuto image : imageAutoCollection) {
+            image.setAuto(myAuto);
+            ImageAuto imageAuto2= imageAutoRepository.save(image);
+            imageAutoCollection2.add(imageAuto2);
+
+        }
+        myAuto.setImagesAuto(imageAutoCollection2);
+       return autoRepository.save(myAuto);
 
     }
 
     @Override
     public void initAuto() {
-        sellerRepository.findAll().forEach(seller -> {
+       /* sellerRepository.findAll().forEach(seller -> {
             Stream.of("Audi", "Toyota", "Mercedes", "BMW", "Honda", "Ford", "Renaud", "Citroen", "Nissan").forEach(auto -> {
                 Auto autoEntity = new Auto();
                 RandomString randomString = new RandomString();
@@ -90,7 +102,7 @@ public class AutoServiceImplementation implements IAutoService {
                 autoEntity.setSeller(seller);
                 autoRepository.save(autoEntity);
             });
-        });
+        });*/
     }
 
 

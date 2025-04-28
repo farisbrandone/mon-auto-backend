@@ -1,5 +1,6 @@
 package com.example.monauto.service;
 
+import com.example.monauto.DTO.ContactDTO;
 import com.example.monauto.DTO.SignupRequest;
 import com.example.monauto.entity.Role;
 import com.example.monauto.entity.Seller;
@@ -21,4 +22,5 @@ public interface SellerService {
     public Seller verifySeller(String token);
     public void initiatePasswordReset(String email);
     public void resetPassword(String token, String newPassword);
+    public void sendContactEmailForAdmin(ContactDTO contactDTO);
 }

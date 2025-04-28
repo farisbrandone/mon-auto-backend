@@ -3,6 +3,7 @@ package com.example.monauto.entity;
 import com.example.monauto.enumFile.RoleUser;
 import com.example.monauto.enumFile.TypeSeller;
 import com.example.monauto.enumFile.TypeSellerIdentificationDoc;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -49,7 +50,10 @@ public class Seller {
     @Enumerated(EnumType.STRING)
     private TypeSellerIdentificationDoc typeSellerIdentificationDoc;
     private String identificationDocumentFile;
+
+
     @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Collection<Auto> autos;
     private boolean activeState=false;
     private String tokenConfirmation;

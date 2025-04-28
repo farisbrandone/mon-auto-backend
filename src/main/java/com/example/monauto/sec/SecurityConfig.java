@@ -50,9 +50,9 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable);
         http.headers(httpSecurityHeadersConfigurer ->httpSecurityHeadersConfigurer.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable) );
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-        http.authorizeHttpRequests(authorizeRequests ->authorizeRequests.requestMatchers("/h2-console/**", "/refreshToken/**", "/forgot-password","/reset-password", "/signup", "/validate-reset-token", "/confirm", "/swagger-ui/**", "/sellers").permitAll());
+        http.authorizeHttpRequests(authorizeRequests ->authorizeRequests.requestMatchers("/h2-console/**", "/refreshToken/**", "/forgot-password","/reset-password", "/signup", "/validate-reset-token", "/confirm", "/swagger-ui/**", "/addAuto", "/sendContact").permitAll());
         http.authorizeHttpRequests(auth -> auth.requestMatchers(SWAGGER_WHITELIST).permitAll());
-        http.authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST,"/roles", "addRole").permitAll());
+        http.authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.GET,"/autos/**", "/search/**", "/newsearch" ).permitAll());
        /* http.csrf(csrf -> csrf
                 .ignoringRequestMatchers(SWAGGER_WHITELIST) // Disable CSRF for Swagger
                 .ignoringRequestMatchers("/api/auth/**")    // And your public endpoints

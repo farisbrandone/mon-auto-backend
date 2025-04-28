@@ -26,7 +26,6 @@ public class Auto {
     private String marques;
     private String typesCarrosserie;
     private Date anneeDeFabrication;
-    private String couleur;
     private String categorie;
     @Enumerated(EnumType.STRING)
     private TypeCarburant typeCarburant;
@@ -45,10 +44,17 @@ public class Auto {
     @Enumerated(EnumType.STRING)
     private StatusOfAuto statusOfAuto;
     private String villeDuBien;
+    private String paysDuBien;
     @ManyToOne
     private  Seller seller;
     private boolean acceptsTerms;
     private String immatriculation;
+    private String model;
+    private String couleurExt;
+    private String couleurInt;
+    private Float conso100kmAutoRoute;
+    private Float conso100kmVille;
+    private Float tailleDuMoteur;
 
     @OneToMany(mappedBy = "auto", cascade = CascadeType.ALL)
     private Collection<ImageAuto> imagesAuto=new ArrayList<>();

@@ -29,5 +29,14 @@ public class AutoPostDto {
     private String    dateOfCreated;
     private String   dateOfModified;
     private String userToken;
+    private String model;
+    private String couleurExt;
+    private String couleurInt;
+    private String villeDuBien;
+    private int nbreDePlace;
+    private int nbreDePorte;
+    private String conso100kmAutoRoute;
+    private String conso100kmVille;
+    private String tailleDuMoteur;
 
 }

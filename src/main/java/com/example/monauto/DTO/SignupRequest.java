@@ -33,5 +33,7 @@ public class SignupRequest {
     private String typeSeller;
     private String typeSellerIdentificationDoc;
     private String identificationDocumentFile;
+    private String dateOfCreated;
+    private String dateOfModified;
     private Collection<String> roleSeller;
 }

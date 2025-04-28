@@ -2,6 +2,7 @@ package com.example.monauto.service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.example.monauto.DTO.ContactDTO;
 import com.example.monauto.DTO.SignupRequest;
 import com.example.monauto.utils.GenerateToken;
 import com.example.monauto.utils.Utils;
@@ -169,7 +170,7 @@ public class SellerServiceImpl implements SellerService {
         sellerRepository.save(seller);
 
         // Send email with reset link
-        String resetUrl = "http://your-frontend-domain.com/reset-password?token=" + token;
+        String resetUrl = "http://localhost:3000/seller-change-password?token=" + token;
         String subject = "Password Reset Request";
         String text = "To reset your password, please click the link below:\n\n" + resetUrl +
                 "\n\nThis link will expire in 24 hours.";
@@ -177,6 +178,18 @@ public class SellerServiceImpl implements SellerService {
         emailService.sendConfirmationEmail(seller.getEmail(), subject, text);
     }
 
+
+ @Override
+ public void sendContactEmailForAdmin (ContactDTO contact){
+        String adminEmail="farisbrandone@yahoo.com";
+
+     String subject = "Message de\n\n"+contact.getNom()+ "\n\nemail:\n\n"+ contact.getEmail()+ "\n\ntelephone:\n\n"+ contact.getTelephone();
+     String text =contact.getMessage();
+      try {
+          emailService.sendConfirmationEmail(adminEmail, subject, text);
+      }catch (Exception e){ throw new RuntimeException(e.getMessage());}
+
+ }
 
 
     @Override
